@@ -1,0 +1,27 @@
+yabai -m config layout bsp
+
+yabai -m config window_placement second_child \
+                top_padding      8            \
+                bottom_padding   8            \
+                left_padding     8            \
+                right_padding    8            \
+                window_gap       8
+
+yabai -m config mouse_follows_focus on
+yabai -m config mouse_modifier alt
+yabai -m config mouse_action1 move
+yabai -m config mouse_drop_action swap
+
+# Disable specific apps
+yabai -m rule --add app="^1Password$" manage=off
+yabai -m rule --add app="^AppCleaner$" manage=off
+yabai -m rule --add app="^coreautha$" manage=off
+yabai -m rule --add app="^Calculator$" manage=off
+yabai -m rule --add app="^Finder$" manage=off
+yabai -m rule --add app="^Home$" manage=off
+yabai -m rule --add app="^Karabiner-Elements$" manage=off
+yabai -m rule --add app="^Messages$" manage=off
+yabai -m rule --add app="^Numi$" manage=off
+yabai -m rule --add app="^SpaceLauncher$" manage=off
+yabai -m rule --add app="^System Information$" manage=off
+yabai -m rule --add app="^System Settings$" manage=off
