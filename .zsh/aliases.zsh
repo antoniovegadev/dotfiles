@@ -1,0 +1,7 @@
+alias lg='lazygit'
+alias vim='nvim'
+alias deeplink='xcrun simctl openurl booted'
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+alias erc='nvim ~/.zshrc'
+alias src='source ~/.zshrc;echo "ZSH sourced."'
+alias fov='nvim $(fzf --preview "bat --color=always --style=numbers --line-range=:500 {}")'
