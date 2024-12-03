@@ -1,1 +1,2 @@
-require('toni')
+require("antonio.core")
+require("antonio.lazy")
