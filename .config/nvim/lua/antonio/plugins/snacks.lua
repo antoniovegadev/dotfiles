@@ -2,14 +2,34 @@ return {
     "folke/snacks.nvim",
     opts = {
         gitbrowse = {
-            config = function(opts, defaults)
-                table.insert(opts.remote_patterns, { "^git@gitssh.jwn.app:(.+)%.git$", "https://git.jwn.app/%1" })
-                opts.url_patterns["git%.jwn%.app"] = {
+            remote_patterns = {
+                { "^git@gitssh.jwn.app:(.+)%.git$"    , "https://git.jwn.app/%1" },
+                { "^(https?://.*)%.git$"              , "%1" },
+                { "^git@(.+):(.+)%.git$"              , "https://%1/%2" },
+                { "^git@(.+):(.+)$"                   , "https://%1/%2" },
+                { "^git@(.+)/(.+)$"                   , "https://%1/%2" },
+                { "^ssh://git@(.*)$"                  , "https://%1" },
+                { "^ssh://([^:/]+)(:%d+)/(.*)$"       , "https://%1/%3" },
+                { "^ssh://([^/]+)/(.*)$"              , "https://%1/%2" },
+                { "ssh%.dev%.azure%.com/v3/(.*)/(.*)$", "dev.azure.com/%1/_git/%2" },
+                { "^https://%w*@(.*)"                 , "https://%1" },
+                { "^git@(.*)"                         , "https://%1" },
+                { ":%d+"                              , "" },
+                { "%.git$"                            , "" },
+            },
+            url_patterns = {
+                ["github%.com"] = {
+                    branch = "/tree/{branch}",
+                    file = "/blob/{branch}/{file}#L{line_start}-L{line_end}",
+                    commit = "/commit/{commit}",
+                },
+                ["git%.jwn%.app"] = {
                     branch = "/-/tree/{branch}",
-                    file = "/-/blob/{branch}/{file}",
+                    file = "/-/blob/{branch}/{file}#L{line_start}-L{line_end}",
                     commit = "/-/commit/{commit}",
                 }
-            end
+
+            }
         }
     },
     keys = {
@@ -32,12 +52,15 @@ return {
                         ["github%.com"] = {
                             file = "/blob/{branch}/{file}",
                         },
+                        ["git%.jwn%.app"] = {
+                            file = "/-/blob/{branch}/{file}",
+                        }
                     }
                 })
             end,
             desc = "Git Browse (copy)"
         },
-        { "<leader>gYl",
+        { "<leader>glY",
             function()
                 Snacks.gitbrowse({
                     notify = false,
@@ -49,12 +72,15 @@ return {
                     url_patterns = {
                         ["github%.com"] = {
                             file = "/blob/{branch}/{file}#L{line_start}-L{line_end}",
+                        },
+                        ["git%.jwn%.app"] = {
+                            file = "/-/blob/{branch}/{file}#L{line_start}-L{line_end}",
                         }
                     }
                 })
             end,
             mode = { "n", "v" },
-            desc = "Git Browse (copy)"
+            desc = "Git Browse (copy) with lines"
         },
     }
 }
