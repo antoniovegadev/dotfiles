@@ -22,6 +22,7 @@ paq({
   { "rose-pine/neovim", as = "rose-pine" },
   "tpope/vim-fugitive",
   { "nvim-treesitter/nvim-treesitter", branch = "main", build = ":TSUpdate" },
+  "nvim-treesitter/nvim-treesitter-context",
   "ibhagwan/fzf-lua",
   "nvim-lualine/lualine.nvim",
 })
