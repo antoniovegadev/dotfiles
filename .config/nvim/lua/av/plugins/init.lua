@@ -23,6 +23,7 @@ paq({
   "tpope/vim-fugitive",
   { "nvim-treesitter/nvim-treesitter", branch = "main", build = ":TSUpdate" },
   "nvim-treesitter/nvim-treesitter-context",
+  { "nvim-treesitter/nvim-treesitter-textobjects", branch = "main" },
   "ibhagwan/fzf-lua",
   "nvim-lualine/lualine.nvim",
 })
@@ -34,5 +35,6 @@ require("av.plugins.mini-icons")
 require("av.plugins.oil")
 require("av.plugins.rose-pine")
 require("av.plugins.treesitter")
+require("av.plugins.treesitter-textobjects")
 require("av.plugins.fzf-lua")
 require("av.plugins.lualine")
